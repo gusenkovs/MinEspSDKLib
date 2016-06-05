@@ -415,7 +415,7 @@ class ELFFile:
             return
         self.symbols = {}
         try:
-            tool_nm = "C:\\Espressif\\xtensa-lx106-elf\\bin\\xtensa-lx106-elf-nm.exe"
+            tool_nm = "/opt/Espressif/crosstool-NG/builds/xtensa-lx106-elf/bin/xtensa-lx106-elf-nm"
             if os.getenv('XTENSA_CORE') == 'lx106':
                 tool_nm = "xt-nm"
             proc = subprocess.Popen([tool_nm, self.name], stdout=subprocess.PIPE)
@@ -436,7 +436,7 @@ class ELFFile:
         return self.symbols[sym]
 
     def load_section(self, section):
-        tool_objcopy = "C:\\Espressif\\xtensa-lx106-elf\\bin\\xtensa-lx106-elf-objcopy.exe"
+        tool_objcopy = "/opt/Espressif/crosstool-NG/builds/xtensa-lx106-elf/bin/xtensa-lx106-elf-objcopy"
         if os.getenv('XTENSA_CORE') == 'lx106':
             tool_objcopy = "xt-objcopy"
         tmpsection = tempfile.mktemp(suffix=".section")
